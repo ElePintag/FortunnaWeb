@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getAllCompraVentaPropiedades, updateCompraVentaPropiedad, deleteCompraVentaPropiedad, CompraVentaPropiedad, getUserEmail } from '@/lib/supabase';
-import { Trash2, Eye, Mail, Phone, Chrome as Home, User, Calendar, FileText, Edit } from 'lucide-react';
+import { Trash2, Eye, Mail, Phone, Chrome as Home, User, Calendar, FileText, CreditCard as Edit } from 'lucide-react';
 
 export default function CompraVentaManager() {
   const [solicitudes, setSolicitudes] = useState<CompraVentaPropiedad[]>([]);
