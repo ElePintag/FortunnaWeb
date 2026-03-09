@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { getAllCompraVentaPropiedades, updateCompraVentaPropiedad, deleteCompraVentaPropiedad, CompraVentaPropiedad, getUserEmail } from '@/lib/supabase';
-import { Trash2, Eye, Mail, Phone, Chrome as Home, User, Calendar, FileText, CreditCard as Edit } from 'lucide-react';
+import { Trash2, Eye, Mail, Phone, Chrome as Home, User, Calendar, FileText, CreditCard as Edit, History } from 'lucide-react';
+import ActivityLogViewer from './ActivityLogViewer';
 
 export default function CompraVentaManager() {
   const [solicitudes, setSolicitudes] = useState<CompraVentaPropiedad[]>([]);
@@ -13,6 +14,7 @@ export default function CompraVentaManager() {
   const [accionTomada, setAccionTomada] = useState('');
   const [notasRevision, setNotasRevision] = useState('');
   const [notasContacto, setNotasContacto] = useState('');
+  const [expandedLogId, setExpandedLogId] = useState<string | null>(null);
 
   useEffect(() => {
     loadSolicitudes();
@@ -272,14 +274,29 @@ export default function CompraVentaManager() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => handleDelete(solicitud.id)}
-                  className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-colors ml-4"
-                  title="Eliminar solicitud"
-                >
-                  <Trash2 className="h-5 w-5" />
-                </button>
+                <div className="flex flex-col space-y-2">
+                  <button
+                    onClick={() => setExpandedLogId(expandedLogId === solicitud.id ? null : solicitud.id)}
+                    className="bg-gray-100 text-gray-700 p-2 rounded-lg hover:bg-gray-200 transition-colors"
+                    title="Ver historial de actividad"
+                  >
+                    <History className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(solicitud.id)}
+                    className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-colors"
+                    title="Eliminar solicitud"
+                  >
+                    <Trash2 className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
+
+              {expandedLogId === solicitud.id && (
+                <div className="mb-4">
+                  <ActivityLogViewer solicitudId={solicitud.id} />
+                </div>
+              )}
 
               {editingId === solicitud.id ? (
                 <div className="pt-4 border-t space-y-3">

@@ -75,6 +75,16 @@ export interface CompraVentaPropiedad {
   notas_contacto?: string;
 }
 
+export interface ActivityLog {
+  id: string;
+  solicitud_id: string;
+  user_id: string | null;
+  accion: string;
+  descripcion: string | null;
+  metadata: any;
+  created_at: string;
+}
+
 export interface Configuracion {
   id: string;
   clave: string;
@@ -423,6 +433,30 @@ export async function deleteCompraVentaPropiedad(id: string) {
     .eq('id', id);
 
   if (error) throw error;
+}
+
+export async function getActivityLogs(solicitudId: string) {
+  const { data, error } = await supabase
+    .from('activity_logs')
+    .select('*')
+    .eq('solicitud_id', solicitudId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data as ActivityLog[];
+}
+
+export async function createActivityLog(log: Omit<ActivityLog, 'id' | 'created_at'>) {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { data, error } = await supabase
+    .from('activity_logs')
+    .insert([{ ...log, user_id: user?.id }])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as ActivityLog;
 }
 
 export async function getUserEmail(userId: string): Promise<string | null> {
