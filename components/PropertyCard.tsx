@@ -67,7 +67,7 @@ export default function PropertyCard({ terreno }: PropertyCardProps) {
           </div>
 
           <div className="pt-4 border-t border-gray-200">
-            <div className="bg-fortunna-red/20 text-fortunna-red px-4 py-3 rounded-lg font-bold text-center group-hover:bg-fortunna-red group-hover:text-white group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
+            <div className="bg-fortunna-red text-white px-4 py-3 rounded-lg font-bold text-center group-hover:scale-110 group-hover:shadow-xl group-hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
               <span>Ver Detalles</span>
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </div>
