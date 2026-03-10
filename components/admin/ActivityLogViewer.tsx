@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getActivityLogs, getUserEmail, ActivityLog } from '@/lib/supabase';
-import { Clock, User, FileText, MessageSquare, CircleCheck as CheckCircle, CircleAlert as AlertCircle } from 'lucide-react';
+import { Clock, User, FileText, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface ActivityLogViewerProps {
   solicitudId: string;
