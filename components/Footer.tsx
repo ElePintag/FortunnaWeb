@@ -18,8 +18,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Tu socio de confianza en inversiones inmobiliarias. Encuentra el
-              terreno perfecto para tu futuro.
+              Tu aliado confiable en bienes raíces.
             </p>
           </div>
 

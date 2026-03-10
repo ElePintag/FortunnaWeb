@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Fortunna Inmobiliaria - Encuentra el terreno de tus sueños',
-  description: 'Tu aliado confiable en bienes raíces..',
+  description: 'Tu aliado confiable en bienes raíces.',
 };
 
 export default function RootLayout({
