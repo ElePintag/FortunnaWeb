@@ -154,7 +154,7 @@ export default function CatalogoPage() {
               <div className="flex space-x-4">
                 <button
                   type="submit"
-                  className="bg-fortunna-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-semibold flex items-center space-x-2"
+                  className="bg-fortunna-red text-white px-6 py-2 rounded-lg font-semibold flex items-center space-x-2 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
                   <Search className="h-5 w-5" />
                   <span>Buscar</span>
