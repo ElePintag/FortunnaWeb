@@ -87,7 +87,7 @@ export default function Header() {
             </Link>
             <Link
               href="/admin"
-              className="bg-fortunna-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium flex items-center space-x-2"
+              className="bg-white text-fortunna-red px-6 py-2 rounded-lg hover:bg-fortunna-red hover:text-white transition-colors font-medium flex items-center space-x-2 border-2 border-fortunna-red"
             >
               <LogIn className="h-4 w-4" />
               <span>Admin</span>
@@ -141,7 +141,7 @@ export default function Header() {
             </Link>
             <Link
               href="/admin"
-              className="flex items-center justify-center space-x-2 bg-fortunna-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="flex items-center justify-center space-x-2 bg-white text-fortunna-red px-6 py-2 rounded-lg hover:bg-fortunna-red hover:text-white transition-colors font-medium border-2 border-fortunna-red"
               onClick={() => setIsMenuOpen(false)}
             >
               <LogIn className="h-4 w-4" />
