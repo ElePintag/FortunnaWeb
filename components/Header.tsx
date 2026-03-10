@@ -54,34 +54,34 @@ export default function Header() {
             )}
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4">
             <Link
               href="/"
-              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-base px-4 py-2 rounded-lg hover:bg-gray-100 hover:-translate-y-1"
             >
               Inicio
             </Link>
             <Link
               href="/catalogo"
-              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-sm px-4 py-2 rounded-lg hover:bg-gray-100 hover:-translate-y-1"
             >
-              Terrenos
+              Casas y Terrenos
             </Link>
             <Link
               href="/nosotros"
-              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-base px-4 py-2 rounded-lg hover:bg-gray-100 hover:-translate-y-1"
             >
               Nosotros
             </Link>
             <Link
               href="/trabaje-con-nosotros"
-              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-base px-4 py-2 rounded-lg hover:bg-gray-100 hover:-translate-y-1"
             >
               Compra o Vende
             </Link>
             <Link
               href="/contacto"
-              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-base px-4 py-2 rounded-lg hover:bg-gray-100 hover:-translate-y-1"
             >
               Contacto
             </Link>
@@ -113,10 +113,10 @@ export default function Header() {
             </Link>
             <Link
               href="/catalogo"
-              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-lg"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
-              Terrenos
+              Casas y Terrenos
             </Link>
             <Link
               href="/nosotros"

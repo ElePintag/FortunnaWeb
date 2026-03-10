@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Building2, Facebook, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Building2, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -70,17 +71,17 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-fortunna-gold mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  Av. Principal 123, Ciudad
+                  Calle Juan Montalvo, entre Chile y Gaspar de Villaroel
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-fortunna-gold flex-shrink-0" />
-                <span className="text-gray-400 text-sm">+52 123 456 7890</span>
+                <span className="text-gray-400 text-sm">0959 185 490</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-fortunna-gold flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  contacto@fortunna.com
+                  fortunnainmobiliaria@gmail.com
                 </span>
               </li>
             </ul>
@@ -92,7 +93,7 @@ export default function Footer() {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/fortunnainmobiliaria/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-fortunna-gold transition-colors"
@@ -100,12 +101,12 @@ export default function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.tiktok.com/@fortunna_inmobiliaria?lang=es"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-fortunna-gold transition-colors"
               >
-                <Instagram className="h-5 w-5" />
+                <FaTiktok className="h-5 w-5" />
               </a>
             </div>
           </div>
