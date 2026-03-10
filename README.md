@@ -332,3 +332,40 @@ Para soporte técnico o consultas:
 
 **⚠️ IMPORTANTE**: Cambia la contraseña predeterminada en producción.
 
+---
+
+## 🔄 Migración a Tu Cuenta de Supabase
+
+Si este proyecto fue creado con Bolt y quieres transferir la base de datos a tu propia cuenta de Supabase, tenemos todo preparado para ti.
+
+### 📚 Guías de Migración Disponibles
+
+El proyecto incluye documentación completa para migrar tu base de datos:
+
+- **`LEEME_MIGRACION.txt`** - Inicio rápido y lista de archivos
+- **`RESUMEN_MIGRACION.md`** - Checklist y tiempo estimado (15-30 min)
+- **`GUIA_MIGRACION.md`** - Guía completa paso a paso ⭐ **EMPIEZA AQUÍ**
+
+### 🛠️ Scripts SQL Incluidos
+
+- **`MIGRACION_COMPLETA.sql`** - Crea toda la estructura en tu nuevo proyecto
+- **`EXPORTAR_DATOS.sql`** - Exporta datos del proyecto actual
+- **`VERIFICAR_MIGRACION.sql`** - Verifica que todo se migró correctamente
+
+### ⚡ Inicio Rápido
+
+1. Abre `LEEME_MIGRACION.txt` para ver el resumen
+2. Lee `GUIA_MIGRACION.md` para instrucciones completas
+3. Sigue los pasos (toma 15-30 minutos)
+4. ¡Listo! Tu BD estará bajo tu control total
+
+### ✅ Beneficios de Migrar
+
+- Control total de tu base de datos
+- No dependes de Bolt para la BD
+- Puedes escalar según tus necesidades
+- Dashboard completo de Supabase
+- Backups y monitoreo en tiempo real
+
+**¿Listo para migrar?** → Abre `GUIA_MIGRACION.md` y comienza.
+

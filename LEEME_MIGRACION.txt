@@ -1,0 +1,80 @@
+================================================================================
+🔄 MIGRACIÓN DE SUPABASE A TU CUENTA PERSONAL
+================================================================================
+
+¡Todo está listo para que migres tu base de datos a tu propia cuenta!
+
+INICIO RÁPIDO:
+==============
+
+1. Abre: RESUMEN_MIGRACION.md
+   → Checklist rápido y tiempo estimado (15-30 min)
+
+2. Lee: GUIA_MIGRACION.md
+   → Guía completa paso a paso con instrucciones detalladas
+
+3. Usa los scripts SQL en este orden:
+   a) MIGRACION_COMPLETA.sql → En tu NUEVO proyecto (crea estructura)
+   b) EXPORTAR_DATOS.sql → En el proyecto ACTUAL (exporta datos)
+   c) [Importar datos manualmente via Table Editor]
+   d) VERIFICAR_MIGRACION.sql → En tu NUEVO proyecto (verifica todo)
+
+4. Actualiza: .env.example.nuevo
+   → Plantilla para tus nuevas credenciales
+
+
+ARCHIVOS INCLUIDOS:
+===================
+
+📖 RESUMEN_MIGRACION.md
+   Resumen ejecutivo con checklist rápido
+
+📖 GUIA_MIGRACION.md
+   Guía completa y detallada (¡EMPIEZA AQUÍ!)
+
+📄 MIGRACION_COMPLETA.sql
+   Script para crear toda la estructura en el nuevo proyecto
+   (Ejecutar en SQL Editor del NUEVO proyecto)
+
+📄 EXPORTAR_DATOS.sql
+   Queries para exportar datos del proyecto actual
+   (Ejecutar en SQL Editor del proyecto ACTUAL de Bolt)
+
+📄 VERIFICAR_MIGRACION.sql
+   Script de verificación post-migración
+   (Ejecutar en SQL Editor del NUEVO proyecto al final)
+
+📄 .env.example.nuevo
+   Plantilla para actualizar variables de entorno
+
+
+PROYECTO ACTUAL (Bolt):
+========================
+URL: https://zcdqcvarguctnvorwlgx.supabase.co
+Dashboard: https://supabase.com/dashboard/project/zcdqcvarguctnvorwlgx
+
+
+NUEVO PROYECTO (Tu Cuenta):
+============================
+[Lo crearás en el Paso 1 de la guía]
+URL: https://TU_PROYECTO.supabase.co
+Dashboard: https://supabase.com/dashboard
+
+
+¿POR DÓNDE EMPEZAR?
+===================
+
+→ Abre GUIA_MIGRACION.md y sigue las instrucciones paso a paso
+
+
+SOPORTE:
+========
+
+Si encuentras algún problema:
+1. Revisa la sección "Solución de Problemas" en GUIA_MIGRACION.md
+2. Ejecuta VERIFICAR_MIGRACION.sql para diagnóstico
+3. Pregunta aquí y te ayudaré
+
+================================================================================
+¡Éxito con tu migración! 🚀
+================================================================================
