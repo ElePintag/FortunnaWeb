@@ -63,7 +63,7 @@ export default function Header() {
             </Link>
             <Link
               href="/catalogo"
-              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-xs px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:-translate-y-1"
+              className="text-gray-700 hover:text-fortunna-red transition-all duration-200 font-medium text-sm px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:-translate-y-1"
             >
               Casas y Terrenos
             </Link>

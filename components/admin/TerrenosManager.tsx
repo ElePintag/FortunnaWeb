@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getAllTerrenos, createTerreno, updateTerreno, deleteTerreno, Terreno } from '@/lib/supabase';
-import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Save, X } from 'lucide-react';
 import MultipleImageUploader from './MultipleImageUploader';
 
 export default function TerrenosManager() {
@@ -22,6 +22,12 @@ export default function TerrenosManager() {
     imagenesText: '',
     destacado: false,
     fecha_publicacion: new Date().toISOString(),
+    revisado: false,
+    revisado_por: '',
+    comentario_revision: '',
+    contactado: false,
+    contactado_por: '',
+    detalle_contacto: '',
   });
 
   useEffect(() => {
@@ -100,6 +106,12 @@ export default function TerrenosManager() {
       imagenesText: '',
       destacado: terreno.destacado,
       fecha_publicacion: terreno.fecha_publicacion,
+      revisado: terreno.revisado || false,
+      revisado_por: terreno.revisado_por || '',
+      comentario_revision: terreno.comentario_revision || '',
+      contactado: terreno.contactado || false,
+      contactado_por: terreno.contactado_por || '',
+      detalle_contacto: terreno.detalle_contacto || '',
     });
   };
 
@@ -116,6 +128,12 @@ export default function TerrenosManager() {
       imagenesText: '',
       destacado: false,
       fecha_publicacion: new Date().toISOString(),
+      revisado: false,
+      revisado_por: '',
+      comentario_revision: '',
+      contactado: false,
+      contactado_por: '',
+      detalle_contacto: '',
     });
   };
 
@@ -253,6 +271,80 @@ export default function TerrenosManager() {
                 <span className="text-sm font-semibold">Destacado</span>
               </label>
             </div>
+
+            <div className="md:col-span-2 border-t pt-4 mt-4">
+              <h4 className="text-lg font-semibold mb-4">Estado de Revisión</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={formData.revisado}
+                      onChange={(e) => setFormData({ ...formData, revisado: e.target.checked })}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-sm font-semibold">Revisado</span>
+                  </label>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Revisado por</label>
+                  <input
+                    type="text"
+                    value={formData.revisado_por}
+                    onChange={(e) => setFormData({ ...formData, revisado_por: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red"
+                    placeholder="Nombre del usuario"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-semibold mb-2">Comentario de Revisión</label>
+                  <textarea
+                    value={formData.comentario_revision}
+                    onChange={(e) => setFormData({ ...formData, comentario_revision: e.target.value })}
+                    rows={3}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red"
+                    placeholder="Comentarios sobre la revisión"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-2 border-t pt-4 mt-4">
+              <h4 className="text-lg font-semibold mb-4">Estado de Contacto</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={formData.contactado}
+                      onChange={(e) => setFormData({ ...formData, contactado: e.target.checked })}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-sm font-semibold">Contactado</span>
+                  </label>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Contactado por</label>
+                  <input
+                    type="text"
+                    value={formData.contactado_por}
+                    onChange={(e) => setFormData({ ...formData, contactado_por: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red"
+                    placeholder="Nombre del usuario"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-semibold mb-2">Detalle de Contacto</label>
+                  <textarea
+                    value={formData.detalle_contacto}
+                    onChange={(e) => setFormData({ ...formData, detalle_contacto: e.target.value })}
+                    rows={3}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red"
+                    placeholder="Detalles del contacto realizado"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="flex space-x-4 mt-6">
@@ -301,6 +393,37 @@ export default function TerrenosManager() {
                     <p className="font-semibold">{terreno.destacado ? 'Sí' : 'No'}</p>
                   </div>
                 </div>
+
+                {(terreno.revisado || terreno.contactado) && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    {terreno.revisado && (
+                      <div className="mb-3">
+                        <div className="flex items-center space-x-2 mb-1">
+                          <span className="text-sm font-semibold text-blue-900">✓ Revisado</span>
+                          {terreno.revisado_por && (
+                            <span className="text-sm text-blue-700">por {terreno.revisado_por}</span>
+                          )}
+                        </div>
+                        {terreno.comentario_revision && (
+                          <p className="text-sm text-blue-800 mt-1">{terreno.comentario_revision}</p>
+                        )}
+                      </div>
+                    )}
+                    {terreno.contactado && (
+                      <div>
+                        <div className="flex items-center space-x-2 mb-1">
+                          <span className="text-sm font-semibold text-green-900">✓ Contactado</span>
+                          {terreno.contactado_por && (
+                            <span className="text-sm text-green-700">por {terreno.contactado_por}</span>
+                          )}
+                        </div>
+                        {terreno.detalle_contacto && (
+                          <p className="text-sm text-green-800 mt-1">{terreno.detalle_contacto}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
                 {terreno.imagenes.length > 0 && (
                   <div className="flex space-x-2 overflow-x-auto">
                     {terreno.imagenes.slice(0, 3).map((img, idx) => (

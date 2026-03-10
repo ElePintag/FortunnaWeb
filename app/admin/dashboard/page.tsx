@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Building2, LogOut, Image as ImageIcon, Layout, Users, FileText, Briefcase, Settings, Home } from 'lucide-react';
+import { Building2, LogOut, Image as ImageIcon, LayoutGrid as Layout, Users, FileText, Briefcase, Settings, Chrome as Home, FileSearch } from 'lucide-react';
 import SlidesManager from '@/components/admin/SlidesManager';
 import TerrenosManager from '@/components/admin/TerrenosManager';
 import UsersManager from '@/components/admin/UsersManager';
@@ -11,8 +11,9 @@ import NosotrosManager from '@/components/admin/NosotrosManager';
 import TrabajeConNosotrosManager from '@/components/admin/TrabajeConNosotrosManager';
 import ConfiguracionManager from '@/components/admin/ConfiguracionManager';
 import CompraVentaManager from '@/components/admin/CompraVentaManager';
+import LogsManager from '@/components/admin/LogsManager';
 
-type Tab = 'slides' | 'terrenos' | 'users' | 'nosotros' | 'trabajeConNosotros' | 'compraVenta' | 'configuracion';
+type Tab = 'slides' | 'terrenos' | 'users' | 'nosotros' | 'trabajeConNosotros' | 'compraVenta' | 'configuracion' | 'logs';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -121,15 +122,15 @@ export default function AdminDashboard() {
               </button>
 
               <button
-                onClick={() => setActiveTab('trabajeConNosotros')}
+                onClick={() => setActiveTab('logs')}
                 className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'trabajeConNosotros'
+                  activeTab === 'logs'
                     ? 'border-fortunna-red text-fortunna-red'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
-                <Briefcase className="h-5 w-5" />
-                <span>Aplicaciones</span>
+                <FileSearch className="h-5 w-5" />
+                <span>Logs</span>
               </button>
 
               <button
@@ -167,6 +168,7 @@ export default function AdminDashboard() {
           {activeTab === 'trabajeConNosotros' && <TrabajeConNosotrosManager />}
           {activeTab === 'compraVenta' && <CompraVentaManager />}
           {activeTab === 'configuracion' && <ConfiguracionManager />}
+          {activeTab === 'logs' && <LogsManager />}
         </div>
       </div>
     </div>

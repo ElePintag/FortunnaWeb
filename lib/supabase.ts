@@ -29,6 +29,12 @@ export interface Terreno {
   imagenes: string[];
   destacado: boolean;
   fecha_publicacion: string;
+  revisado: boolean;
+  revisado_por: string | null;
+  comentario_revision: string | null;
+  contactado: boolean;
+  contactado_por: string | null;
+  detalle_contacto: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -74,6 +80,16 @@ export interface Configuracion {
   tipo: 'texto' | 'imagen' | 'numero' | 'boolean';
   descripcion: string | null;
   updated_at: string;
+}
+
+export interface SystemLog {
+  id: string;
+  tipo: 'error' | 'info' | 'warning' | 'success' | 'user_action';
+  modulo: string;
+  mensaje: string;
+  detalles: any | null;
+  usuario_email: string | null;
+  created_at: string;
 }
 
 export async function getSlides() {
@@ -396,6 +412,54 @@ export async function updateCompraVentaPropiedad(id: string, solicitud: Partial<
 export async function deleteCompraVentaPropiedad(id: string) {
   const { error } = await supabase
     .from('compra_venta_propiedades')
+    .delete()
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function getAllLogs(filters?: {
+  tipo?: string;
+  modulo?: string;
+  limit?: number;
+}) {
+  let query = supabase
+    .from('system_logs')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (filters?.tipo) {
+    query = query.eq('tipo', filters.tipo);
+  }
+
+  if (filters?.modulo) {
+    query = query.eq('modulo', filters.modulo);
+  }
+
+  if (filters?.limit) {
+    query = query.limit(filters.limit);
+  }
+
+  const { data, error } = await query;
+
+  if (error) throw error;
+  return data as SystemLog[];
+}
+
+export async function createLog(log: Omit<SystemLog, 'id' | 'created_at'>) {
+  const { data, error } = await supabase
+    .from('system_logs')
+    .insert([log])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as SystemLog;
+}
+
+export async function deleteLog(id: string) {
+  const { error } = await supabase
+    .from('system_logs')
     .delete()
     .eq('id', id);
 
