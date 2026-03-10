@@ -82,9 +82,7 @@ export default function ContactoPage() {
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Dirección</h3>
                     <p className="text-gray-600">
-                      Av. Principal 123, Colonia Centro
-                      <br />
-                      Ciudad, Estado, CP 12345
+                      Calle Juan Montalvo, entre Chile y Gaspar de Villaroel
                     </p>
                   </div>
                 </div>
@@ -95,8 +93,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Teléfono</h3>
-                    <p className="text-gray-600">+52 123 456 7890</p>
-                    <p className="text-gray-600">+52 098 765 4321</p>
+                    <p className="text-gray-600">0959184490</p>
                   </div>
                 </div>
 
@@ -106,8 +103,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-gray-600">contacto@fortunna.com</p>
-                    <p className="text-gray-600">ventas@fortunna.com</p>
+                    <p className="text-gray-600">fortunnainmobiliaria@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -247,10 +243,10 @@ export default function ContactoPage() {
               <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
                 <Mail className="h-6 w-6 text-fortunna-red" />
                 <a
-                  href="mailto:rrhh@fortunna.com"
+                  href="mailto:fortunnainmobiliaria@gmail.com"
                   className="text-lg font-semibold text-fortunna-red hover:underline"
                 >
-                  rrhh@fortunna.com
+                  fortunnainmobiliaria@gmail.com
                 </a>
               </div>
               <p className="text-sm text-gray-500 mt-4">
