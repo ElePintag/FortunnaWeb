@@ -54,40 +54,40 @@ export default function Header() {
             )}
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-3">
+          <nav className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="px-4 py-2 rounded-lg text-gray-700 font-medium text-sm"
+              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-sm"
             >
               Inicio
             </Link>
             <Link
               href="/catalogo"
-              className="px-4 py-2 rounded-lg text-gray-700 font-medium text-sm"
+              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-sm"
             >
               Casas y Terrenos
             </Link>
             <Link
               href="/nosotros"
-              className="px-4 py-2 rounded-lg text-gray-700 font-medium text-sm"
+              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-sm"
             >
               Nosotros
             </Link>
             <Link
               href="/trabaje-con-nosotros"
-              className="px-4 py-2 rounded-lg text-gray-700 font-medium text-sm"
+              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-sm"
             >
               Compra o Vende
             </Link>
             <Link
               href="/contacto"
-              className="px-4 py-2 rounded-lg text-gray-700 font-medium text-sm"
+              className="text-gray-700 hover:text-fortunna-red transition-colors font-medium text-sm"
             >
               Contacto
             </Link>
             <Link
               href="/admin"
-              className="bg-fortunna-red text-white px-5 py-2 rounded-lg hover:bg-red-700 font-medium flex items-center space-x-2 text-sm shadow-md"
+              className="bg-fortunna-red text-white px-5 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium flex items-center space-x-2 text-sm"
             >
               <LogIn className="h-4 w-4" />
               <span>Admin</span>
@@ -103,45 +103,45 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden py-4 space-y-3 border-t">
+          <nav className="md:hidden py-4 space-y-4 border-t">
             <Link
               href="/"
-              className="block px-4 py-2 rounded-lg text-gray-700 font-medium text-base"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               Inicio
             </Link>
             <Link
               href="/catalogo"
-              className="block px-4 py-2 rounded-lg text-gray-700 font-medium text-base"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               Casas y Terrenos
             </Link>
             <Link
               href="/nosotros"
-              className="block px-4 py-2 rounded-lg text-gray-700 font-medium text-base"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               Nosotros
             </Link>
             <Link
               href="/trabaje-con-nosotros"
-              className="block px-4 py-2 rounded-lg text-gray-700 font-medium text-base"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               Compra o Vende
             </Link>
             <Link
               href="/contacto"
-              className="block px-4 py-2 rounded-lg text-gray-700 font-medium text-base"
+              className="block text-gray-700 hover:text-fortunna-red transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               Contacto
             </Link>
             <Link
               href="/admin"
-              className="flex items-center justify-center space-x-2 bg-fortunna-red text-white px-6 py-2 rounded-lg hover:bg-red-700 font-medium text-base shadow-md"
+              className="flex items-center justify-center space-x-2 bg-fortunna-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium text-base"
               onClick={() => setIsMenuOpen(false)}
             >
               <LogIn className="h-4 w-4" />
