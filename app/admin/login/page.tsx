@@ -8,7 +8,7 @@ import { Building2, Lock, Mail } from 'lucide-react';
 export default function LoginPage() {
   const router = useRouter();
   const { signIn, user } = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('admin');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -68,13 +68,12 @@ export default function LoginPage() {
                   <Mail className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="email"
+                  type="text"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red focus:border-transparent"
-                  placeholder="admin@fortunna.com"
                 />
               </div>
             </div>
@@ -97,7 +96,6 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fortunna-red focus:border-transparent"
-                  placeholder="••••••••"
                 />
               </div>
             </div>
@@ -118,19 +116,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-gray-200 text-center">
-            <p className="text-sm text-gray-600">
-              Usuario predeterminado:
-              <br />
-              <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
-                admin@fortunna.com
-              </span>
-              {' / '}
-              <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
-                admin
-              </span>
-            </p>
-          </div>
         </div>
       </div>
     </div>
