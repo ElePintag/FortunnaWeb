@@ -20,6 +20,8 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        'fortunna-red': '#B91C1C',
+        'fortunna-gold': '#F59E0B',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
