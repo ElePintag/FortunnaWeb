@@ -37,9 +37,9 @@ export default function NosotrosManager() {
   const handleCreate = async () => {
     try {
       await createNosotros(formData);
-      await loadNosotros();
       setIsCreating(false);
       resetForm();
+      await loadNosotros();
       alert('Sección creada exitosamente');
     } catch (error: any) {
       console.error('Error creating nosotros:', error);
@@ -50,9 +50,9 @@ export default function NosotrosManager() {
   const handleUpdate = async (id: string) => {
     try {
       await updateNosotros(id, formData);
-      await loadNosotros();
       setEditingId(null);
       resetForm();
+      await loadNosotros();
       alert('Sección actualizada exitosamente');
     } catch (error: any) {
       console.error('Error updating nosotros:', error);

@@ -37,9 +37,9 @@ export default function SlidesManager() {
   const handleCreate = async () => {
     try {
       await createSlide(formData);
-      await loadSlides();
       setIsCreating(false);
       resetForm();
+      await loadSlides();
       alert('Slide creado exitosamente');
     } catch (error: any) {
       console.error('Error creating slide:', error);
@@ -50,9 +50,9 @@ export default function SlidesManager() {
   const handleUpdate = async (id: string) => {
     try {
       await updateSlide(id, formData);
-      await loadSlides();
       setEditingId(null);
       resetForm();
+      await loadSlides();
       alert('Slide actualizado exitosamente');
     } catch (error: any) {
       console.error('Error updating slide:', error);

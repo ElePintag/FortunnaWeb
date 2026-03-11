@@ -58,9 +58,9 @@ export default function TerrenosManager() {
     try {
       const { imagenesText, ...terrenoData } = formData;
       await createTerreno(terrenoData);
-      await loadTerrenos();
       setIsCreating(false);
       resetForm();
+      await loadTerrenos();
       alert('Terreno creado exitosamente');
     } catch (error: any) {
       console.error('Error creating terreno:', error);
@@ -72,9 +72,9 @@ export default function TerrenosManager() {
     try {
       const { imagenesText, ...terrenoData } = formData;
       await updateTerreno(id, terrenoData);
-      await loadTerrenos();
       setEditingId(null);
       resetForm();
+      await loadTerrenos();
       alert('Terreno actualizado exitosamente');
     } catch (error: any) {
       console.error('Error updating terreno:', error);
