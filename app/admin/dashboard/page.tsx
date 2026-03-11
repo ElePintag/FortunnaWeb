@@ -17,8 +17,8 @@ type Tab = 'slides' | 'terrenos' | 'users' | 'nosotros' | 'trabajeConNosotros' |
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { user, loading, signOut } = useAuth();
-  const [activeTab, setActiveTab] = useState<Tab>('slides');
+  const { user, loading, isAdmin, isOperador, userRole, signOut } = useAuth();
+  const [activeTab, setActiveTab] = useState<Tab>(isAdmin ? 'slides' : 'terrenos');
 
   useEffect(() => {
     if (!loading && !user) {
@@ -54,7 +54,16 @@ export default function AdminDashboard() {
                 <h1 className="text-2xl font-bold text-fortunna-red">
                   Panel de Administración
                 </h1>
-                <p className="text-sm text-gray-600">{user.email}</p>
+                <p className="text-sm text-gray-600">
+                  {user.email}
+                  {userRole && (
+                    <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                      userRole === 'admin' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'
+                    }`}>
+                      {userRole === 'admin' ? 'Administrador' : 'Operador'}
+                    </span>
+                  )}
+                </p>
               </div>
             </div>
 
@@ -73,17 +82,19 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <div className="border-b border-gray-200">
             <nav className="flex space-x-8">
-              <button
-                onClick={() => setActiveTab('slides')}
-                className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'slides'
-                    ? 'border-fortunna-red text-fortunna-red'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <Layout className="h-5 w-5" />
-                <span>Slides del Banner</span>
-              </button>
+              {isAdmin && (
+                <button
+                  onClick={() => setActiveTab('slides')}
+                  className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
+                    activeTab === 'slides'
+                      ? 'border-fortunna-red text-fortunna-red'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  <Layout className="h-5 w-5" />
+                  <span>Slides del Banner</span>
+                </button>
+              )}
 
               <button
                 onClick={() => setActiveTab('terrenos')}
@@ -98,42 +109,6 @@ export default function AdminDashboard() {
               </button>
 
               <button
-                onClick={() => setActiveTab('users')}
-                className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'users'
-                    ? 'border-fortunna-red text-fortunna-red'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <Users className="h-5 w-5" />
-                <span>Usuarios</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('nosotros')}
-                className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'nosotros'
-                    ? 'border-fortunna-red text-fortunna-red'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <FileText className="h-5 w-5" />
-                <span>Nosotros</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('logs')}
-                className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'logs'
-                    ? 'border-fortunna-red text-fortunna-red'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <FileSearch className="h-5 w-5" />
-                <span>Logs</span>
-              </button>
-
-              <button
                 onClick={() => setActiveTab('compraVenta')}
                 className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
                   activeTab === 'compraVenta'
@@ -145,17 +120,57 @@ export default function AdminDashboard() {
                 <span>Compra/Venta</span>
               </button>
 
-              <button
-                onClick={() => setActiveTab('configuracion')}
-                className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
-                  activeTab === 'configuracion'
-                    ? 'border-fortunna-red text-fortunna-red'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                <Settings className="h-5 w-5" />
-                <span>Configuración</span>
-              </button>
+              {isAdmin && (
+                <>
+                  <button
+                    onClick={() => setActiveTab('users')}
+                    className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
+                      activeTab === 'users'
+                        ? 'border-fortunna-red text-fortunna-red'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <Users className="h-5 w-5" />
+                    <span>Usuarios</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('nosotros')}
+                    className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
+                      activeTab === 'nosotros'
+                        ? 'border-fortunna-red text-fortunna-red'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <FileText className="h-5 w-5" />
+                    <span>Nosotros</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('logs')}
+                    className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
+                      activeTab === 'logs'
+                        ? 'border-fortunna-red text-fortunna-red'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <FileSearch className="h-5 w-5" />
+                    <span>Logs</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('configuracion')}
+                    className={`pb-4 px-1 border-b-2 font-semibold flex items-center space-x-2 transition-colors ${
+                      activeTab === 'configuracion'
+                        ? 'border-fortunna-red text-fortunna-red'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <Settings className="h-5 w-5" />
+                    <span>Configuración</span>
+                  </button>
+                </>
+              )}
             </nav>
           </div>
         </div>
