@@ -26,25 +26,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchUserRole = async (email: string) => {
     try {
+      console.log('🔍 Fetching role for email:', email);
+
       const { data, error } = await supabase
         .from('users')
         .select('rol')
         .eq('email', email)
         .maybeSingle();
 
+      console.log('📊 Query result:', { data, error });
+
       if (error) {
-        console.error('Error fetching user role:', error);
+        console.error('❌ Error fetching user role:', error);
         setUserRole(null);
         return;
       }
 
       if (data) {
+        console.log('✅ User role found:', data.rol);
         setUserRole(data.rol as 'admin' | 'operador' | 'user');
       } else {
+        console.log('⚠️ No user data found');
         setUserRole(null);
       }
     } catch (error) {
-      console.error('Error in fetchUserRole:', error);
+      console.error('❌ Exception in fetchUserRole:', error);
       setUserRole(null);
     }
   };

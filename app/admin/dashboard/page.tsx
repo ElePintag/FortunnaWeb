@@ -21,6 +21,16 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>(isAdmin ? 'slides' : 'terrenos');
 
   useEffect(() => {
+    console.log('🎯 Dashboard Auth State:', {
+      user: user?.email,
+      userRole,
+      isAdmin,
+      isOperador,
+      loading
+    });
+  }, [user, userRole, isAdmin, isOperador, loading]);
+
+  useEffect(() => {
     if (!loading && !user) {
       router.push('/admin/login');
     }
