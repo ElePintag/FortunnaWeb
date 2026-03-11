@@ -13,6 +13,21 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'admin.fortunnainmobiliaria.com.ec',
+          },
+        ],
+        destination: '/admin/login',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
