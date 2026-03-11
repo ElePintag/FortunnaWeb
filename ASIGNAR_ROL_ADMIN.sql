@@ -1,31 +1,25 @@
 /*
-  # Asignar Rol de Administrador
+  # Asignar Rol de Administrador a admin@fortunna.com
 
-  Este script:
-  1. Agrega la columna 'rol' a la tabla users si no existe
-  2. Asigna el rol 'admin' al usuario admin@fortunna.com
+  Este script agrega o actualiza el usuario admin@fortunna.com
+  con rol de administrador.
 
-  Ejecutar este script en el SQL Editor de Supabase
+  Contraseña: admin123
 */
 
--- 1. Agregar columna 'rol' si no existe
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1 FROM information_schema.columns
-    WHERE table_name = 'users' AND column_name = 'rol'
-  ) THEN
-    ALTER TABLE users ADD COLUMN rol VARCHAR(20) DEFAULT 'user';
-    COMMENT ON COLUMN users.rol IS 'Rol del usuario: admin, operador, o user';
-  END IF;
-END $$;
+-- Insertar o actualizar usuario admin
+INSERT INTO users (email, password, rol)
+VALUES (
+  'admin@fortunna.com',
+  '$2a$10$rH8L9p7Vx4aYKGXxvKZXZOQxH6FZqN4vL8yC5wZ3jN2pQ1xR9tL6C',
+  'admin'
+)
+ON CONFLICT (email)
+DO UPDATE SET
+  rol = 'admin',
+  updated_at = now();
 
--- 2. Asignar rol de admin al usuario admin@fortunna.com
-UPDATE users
-SET rol = 'admin'
-WHERE email = 'admin@fortunna.com';
-
--- 3. Verificar que se aplicó correctamente
-SELECT id, email, rol, created_at
+-- Verificar que se creó correctamente
+SELECT id, email, rol, created_at, updated_at
 FROM users
 WHERE email = 'admin@fortunna.com';
