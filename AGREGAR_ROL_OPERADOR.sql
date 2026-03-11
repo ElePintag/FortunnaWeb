@@ -244,3 +244,20 @@ COMMENT ON FUNCTION is_operador() IS
 
 COMMENT ON FUNCTION is_admin_or_operador() IS
 'Verifica si el usuario autenticado es admin u operador';
+
+-- =============================================
+-- ACTUALIZAR USUARIO ADMIN POR DEFECTO
+-- =============================================
+
+-- Asignar rol de admin al usuario admin@fortunna.com
+UPDATE auth.users
+SET raw_app_meta_data = COALESCE(raw_app_meta_data, '{}'::jsonb) || '{"rol": "admin"}'::jsonb
+WHERE email = 'admin@fortunna.com';
+
+-- Actualizar también en la tabla users (o insertar si no existe)
+INSERT INTO users (id, email, rol, activo)
+SELECT id, email, 'admin', true
+FROM auth.users
+WHERE email = 'admin@fortunna.com'
+ON CONFLICT (id)
+DO UPDATE SET rol = 'admin', activo = true;
