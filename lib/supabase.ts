@@ -185,18 +185,23 @@ export async function createSlide(slide: Omit<Slide, 'id' | 'created_at' | 'upda
 }
 
 export async function updateSlide(id: string, slide: Partial<Omit<Slide, 'id' | 'created_at' | 'updated_at'>>) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('slides')
     .update({ ...slide, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .select()
-    .single();
+    .eq('id', id);
 
   if (error) {
     console.error('Error en updateSlide:', error);
     throw new Error(`Error al actualizar slide: ${error.message || 'Error desconocido'}`);
   }
-  return data as Slide;
+
+  const { data: updatedData } = await supabase
+    .from('slides')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+  return updatedData as Slide;
 }
 
 export async function deleteSlide(id: string) {
@@ -234,18 +239,23 @@ export async function createTerreno(terreno: Omit<Terreno, 'id' | 'created_at' |
 }
 
 export async function updateTerreno(id: string, terreno: Partial<Omit<Terreno, 'id' | 'created_at' | 'updated_at'>>) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('terrenos')
     .update({ ...terreno, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .select()
-    .single();
+    .eq('id', id);
 
   if (error) {
     console.error('Error en updateTerreno:', error);
     throw new Error(`Error al actualizar terreno: ${error.message || 'Error desconocido'}`);
   }
-  return data as Terreno;
+
+  const { data: updatedData } = await supabase
+    .from('terrenos')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+  return updatedData as Terreno;
 }
 
 export async function deleteTerreno(id: string) {
@@ -294,18 +304,23 @@ export async function createNosotros(nosotros: Omit<Nosotros, 'id' | 'created_at
 }
 
 export async function updateNosotros(id: string, nosotros: Partial<Omit<Nosotros, 'id' | 'created_at' | 'updated_at'>>) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('nosotros')
     .update({ ...nosotros, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .select()
-    .single();
+    .eq('id', id);
 
   if (error) {
     console.error('Error en updateNosotros:', error);
     throw new Error(`Error al actualizar sección: ${error.message || 'Error desconocido'}`);
   }
-  return data as Nosotros;
+
+  const { data: updatedData } = await supabase
+    .from('nosotros')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+  return updatedData as Nosotros;
 }
 
 export async function deleteNosotros(id: string) {
@@ -340,15 +355,20 @@ export async function createTrabajeConNosotros(aplicacion: Omit<TrabajeConNosotr
 }
 
 export async function updateTrabajeConNosotros(id: string, aplicacion: Partial<Omit<TrabajeConNosotros, 'id' | 'created_at'>>) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('trabaje_con_nosotros')
     .update(aplicacion)
-    .eq('id', id)
-    .select()
-    .single();
+    .eq('id', id);
 
   if (error) throw error;
-  return data as TrabajeConNosotros;
+
+  const { data: updatedData } = await supabase
+    .from('trabaje_con_nosotros')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+  return updatedData as TrabajeConNosotros;
 }
 
 export async function deleteTrabajeConNosotros(id: string) {
@@ -382,15 +402,20 @@ export async function getConfiguracionByClave(clave: string) {
 }
 
 export async function updateConfiguracion(clave: string, valor: string) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('configuracion')
     .update({ valor, updated_at: new Date().toISOString() })
-    .eq('clave', clave)
-    .select()
-    .single();
+    .eq('clave', clave);
 
   if (error) throw error;
-  return data as Configuracion;
+
+  const { data: updatedData } = await supabase
+    .from('configuracion')
+    .select()
+    .eq('clave', clave)
+    .maybeSingle();
+
+  return updatedData as Configuracion;
 }
 
 // CRUD operations for CompraVentaPropiedades
@@ -416,15 +441,20 @@ export async function createCompraVentaPropiedad(solicitud: Omit<CompraVentaProp
 }
 
 export async function updateCompraVentaPropiedad(id: string, solicitud: Partial<Omit<CompraVentaPropiedad, 'id' | 'created_at'>>) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('compra_venta_propiedades')
     .update(solicitud)
-    .eq('id', id)
-    .select()
-    .single();
+    .eq('id', id);
 
   if (error) throw error;
-  return data as CompraVentaPropiedad;
+
+  const { data: updatedData } = await supabase
+    .from('compra_venta_propiedades')
+    .select()
+    .eq('id', id)
+    .maybeSingle();
+
+  return updatedData as CompraVentaPropiedad;
 }
 
 export async function deleteCompraVentaPropiedad(id: string) {

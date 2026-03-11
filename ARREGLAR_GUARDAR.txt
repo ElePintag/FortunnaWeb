@@ -1,0 +1,133 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║               🔧 SOLUCIÓN: ERROR AL GUARDAR EN EL ADMIN                      ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Si ves el error "Error al actualizar la sección" o "Cannot coerce the result to
+a single JSON object", sigue estos 5 pasos:
+
+
+📋 PASO 1: ABRIR SUPABASE DASHBOARD
+────────────────────────────────────────────────────────────────────────────────
+
+1. Ve a: https://supabase.com/dashboard
+2. Inicia sesión
+3. Selecciona tu proyecto "Fortunna Inmobiliaria"
+
+
+📋 PASO 2: ABRIR SQL EDITOR
+────────────────────────────────────────────────────────────────────────────────
+
+1. En el menú lateral izquierdo, busca "SQL Editor"
+2. Haz clic en "SQL Editor"
+3. Haz clic en el botón "+ New query"
+
+
+📋 PASO 3: COPIAR Y PEGAR EL SCRIPT SQL
+────────────────────────────────────────────────────────────────────────────────
+
+1. Abre el archivo: fix-rls-policies.sql
+2. Selecciona TODO el contenido (Ctrl+A / Cmd+A)
+3. Copia (Ctrl+C / Cmd+C)
+4. Pega en el SQL Editor de Supabase (Ctrl+V / Cmd+V)
+
+
+📋 PASO 4: EJECUTAR EL SCRIPT
+────────────────────────────────────────────────────────────────────────────────
+
+1. Haz clic en el botón "Run" (esquina superior derecha)
+   o presiona Ctrl+Enter (Windows) / Cmd+Enter (Mac)
+2. Espera 1-2 segundos
+3. Verifica que diga "Success. No rows returned" o similar
+
+
+📋 PASO 5: PROBAR EN EL ADMIN
+────────────────────────────────────────────────────────────────────────────────
+
+1. Ve al panel de administración
+2. IMPORTANTE: Cierra sesión (botón "Cerrar Sesión")
+3. Vuelve a iniciar sesión con:
+   - Email: admin@fortunna.com
+   - Password: admin
+4. Intenta crear o editar un slide/terreno/sección
+5. ¡Debería funcionar! ✅
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            🎯 ¿QUÉ HACE ESTE SCRIPT?                         ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+El script configura las "políticas de seguridad" (RLS) en Supabase para que
+usuarios autenticados (como el admin) puedan:
+
+  ✓ Crear nuevos slides, terrenos y secciones
+  ✓ Actualizar slides, terrenos y secciones existentes
+  ✓ Eliminar slides, terrenos y secciones
+
+Sin estas políticas, Supabase bloquea todas las operaciones de escritura.
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         🐛 SI SIGUE SIN FUNCIONAR                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+1. Verifica que el usuario admin existe:
+   - Ve a Authentication → Users en Supabase
+   - Busca admin@fortunna.com
+   - Verifica que tenga un ✓ verde (email confirmado)
+
+2. Si el usuario no existe, créalo:
+   - Haz clic en "Add user" → "Create new user"
+   - Email: admin@fortunna.com
+   - Password: admin
+   - ✓ Marca "Auto Confirm User"
+   - Clic en "Create user"
+
+3. Abre la consola del navegador (F12):
+   - Ve a la pestaña "Console"
+   - Intenta guardar un cambio
+   - Captura el error completo
+   - El error te dirá exactamente qué está fallando
+
+4. Errores comunes y soluciones:
+
+   ❌ "new row violates row-level security policy"
+      → Ejecuta el script SQL fix-rls-policies.sql
+
+   ❌ "JWT expired" o "Invalid token"
+      → Cierra sesión y vuelve a iniciar sesión
+
+   ❌ "Cannot coerce the result to a single JSON object"
+      → Ya está arreglado en el código, solo reinicia el servidor
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                          ✅ CAMBIOS REALIZADOS                               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+He corregido el código para:
+
+1. ✓ Mejor manejo de errores (mensajes más claros)
+2. ✓ Arreglado el error "Cannot coerce to single JSON object"
+3. ✓ Mensajes de éxito cuando se guarda correctamente
+4. ✓ Script SQL listo para configurar las políticas RLS
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         📞 NECESITAS MÁS AYUDA?                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Lee el archivo: SOLUCION_GUARDAR_ADMIN.md
+
+Ese archivo tiene TODA la información detallada sobre:
+  - Cómo diagnosticar problemas
+  - Errores comunes y soluciones
+  - Cómo verificar que todo está bien configurado
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+                               ¡Éxito! 🚀
+
+════════════════════════════════════════════════════════════════════════════════
