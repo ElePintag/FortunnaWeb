@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getAllNosotros, createNosotros, updateNosotros, deleteNosotros, Nosotros } from '@/lib/supabase';
-import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Save, X } from 'lucide-react';
 import MultipleImageUploader from './MultipleImageUploader';
 
 export default function NosotrosManager() {
@@ -40,9 +40,10 @@ export default function NosotrosManager() {
       await loadNosotros();
       setIsCreating(false);
       resetForm();
-    } catch (error) {
+      alert('Sección creada exitosamente');
+    } catch (error: any) {
       console.error('Error creating nosotros:', error);
-      alert('Error al crear la sección');
+      alert(error?.message || 'Error al crear la sección. Verifica que estés autenticado y que todos los campos estén completos.');
     }
   };
 
@@ -52,9 +53,10 @@ export default function NosotrosManager() {
       await loadNosotros();
       setEditingId(null);
       resetForm();
-    } catch (error) {
+      alert('Sección actualizada exitosamente');
+    } catch (error: any) {
       console.error('Error updating nosotros:', error);
-      alert('Error al actualizar la sección');
+      alert(error?.message || 'Error al actualizar la sección. Verifica que estés autenticado y que todos los campos estén completos.');
     }
   };
 

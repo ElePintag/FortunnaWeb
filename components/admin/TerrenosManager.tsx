@@ -61,9 +61,10 @@ export default function TerrenosManager() {
       await loadTerrenos();
       setIsCreating(false);
       resetForm();
-    } catch (error) {
+      alert('Terreno creado exitosamente');
+    } catch (error: any) {
       console.error('Error creating terreno:', error);
-      alert('Error al crear el terreno');
+      alert(error?.message || 'Error al crear el terreno. Verifica que estés autenticado y que todos los campos requeridos estén completos.');
     }
   };
 
@@ -74,9 +75,10 @@ export default function TerrenosManager() {
       await loadTerrenos();
       setEditingId(null);
       resetForm();
-    } catch (error) {
+      alert('Terreno actualizado exitosamente');
+    } catch (error: any) {
       console.error('Error updating terreno:', error);
-      alert('Error al actualizar el terreno');
+      alert(error?.message || 'Error al actualizar el terreno. Verifica que estés autenticado y que todos los campos requeridos estén completos.');
     }
   };
 

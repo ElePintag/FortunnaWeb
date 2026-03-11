@@ -177,7 +177,10 @@ export async function createSlide(slide: Omit<Slide, 'id' | 'created_at' | 'upda
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en createSlide:', error);
+    throw new Error(`Error al crear slide: ${error.message || 'Error desconocido'}`);
+  }
   return data as Slide;
 }
 
@@ -189,7 +192,10 @@ export async function updateSlide(id: string, slide: Partial<Omit<Slide, 'id' | 
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en updateSlide:', error);
+    throw new Error(`Error al actualizar slide: ${error.message || 'Error desconocido'}`);
+  }
   return data as Slide;
 }
 
@@ -220,7 +226,10 @@ export async function createTerreno(terreno: Omit<Terreno, 'id' | 'created_at' |
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en createTerreno:', error);
+    throw new Error(`Error al crear terreno: ${error.message || 'Error desconocido'}`);
+  }
   return data as Terreno;
 }
 
@@ -232,7 +241,10 @@ export async function updateTerreno(id: string, terreno: Partial<Omit<Terreno, '
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en updateTerreno:', error);
+    throw new Error(`Error al actualizar terreno: ${error.message || 'Error desconocido'}`);
+  }
   return data as Terreno;
 }
 
@@ -274,7 +286,10 @@ export async function createNosotros(nosotros: Omit<Nosotros, 'id' | 'created_at
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en createNosotros:', error);
+    throw new Error(`Error al crear sección: ${error.message || 'Error desconocido'}`);
+  }
   return data as Nosotros;
 }
 
@@ -286,7 +301,10 @@ export async function updateNosotros(id: string, nosotros: Partial<Omit<Nosotros
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error('Error en updateNosotros:', error);
+    throw new Error(`Error al actualizar sección: ${error.message || 'Error desconocido'}`);
+  }
   return data as Nosotros;
 }
 

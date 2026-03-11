@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getAllSlides, createSlide, updateSlide, deleteSlide, Slide } from '@/lib/supabase';
-import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Save, X } from 'lucide-react';
 import ImageUploader from './ImageUploader';
 
 export default function SlidesManager() {
@@ -40,9 +40,10 @@ export default function SlidesManager() {
       await loadSlides();
       setIsCreating(false);
       resetForm();
-    } catch (error) {
+      alert('Slide creado exitosamente');
+    } catch (error: any) {
       console.error('Error creating slide:', error);
-      alert('Error al crear el slide');
+      alert(error?.message || 'Error al crear el slide. Verifica que estés autenticado y que todos los campos requeridos estén completos.');
     }
   };
 
@@ -52,9 +53,10 @@ export default function SlidesManager() {
       await loadSlides();
       setEditingId(null);
       resetForm();
-    } catch (error) {
+      alert('Slide actualizado exitosamente');
+    } catch (error: any) {
       console.error('Error updating slide:', error);
-      alert('Error al actualizar el slide');
+      alert(error?.message || 'Error al actualizar el slide. Verifica que estés autenticado y que todos los campos requeridos estén completos.');
     }
   };
 
