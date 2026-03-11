@@ -37,8 +37,15 @@ export default function AdminDashboard() {
   }, [user, loading, router]);
 
   const handleSignOut = async () => {
-    await signOut();
-    router.push('/admin/login');
+    try {
+      console.log('🔄 Starting logout process...');
+      await signOut();
+      console.log('✅ SignOut completed, redirecting...');
+      router.push('/admin/login');
+      router.refresh();
+    } catch (error) {
+      console.error('❌ Error in handleSignOut:', error);
+    }
   };
 
   if (loading) {

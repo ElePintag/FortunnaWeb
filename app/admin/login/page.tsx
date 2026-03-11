@@ -23,12 +23,16 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
 
+    console.log('🔐 Attempting login with email:', email);
+
     const { error: signInError } = await signIn(email, password);
 
     if (signInError) {
+      console.error('❌ Login error:', signInError);
       setError('Email o contraseña incorrectos');
       setLoading(false);
     } else {
+      console.log('✅ Login successful, redirecting to dashboard');
       router.push('/admin/dashboard');
     }
   };
